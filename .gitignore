@@ -1,0 +1,6 @@
+#ignore bin, obj, .vs directories
+.vs/*
+LeetCode/bin/*
+Leetcode/obj/*
+UnitTest/bin/*
+UnitTest/obj/*
