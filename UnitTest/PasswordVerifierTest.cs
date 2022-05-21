@@ -23,7 +23,7 @@ namespace PasswordVerifierTest
         [InlineData("Delhi@#00")]
         [InlineData("   ")]
         [InlineData("astdvhj")]
-        public void Password_IsValid_ThrowException(string input)
+        public void Password_IsNotValid_ThrowException(string input)
         {
             //arrange
             PasswordVerify passwordVerify = new PasswordVerify();

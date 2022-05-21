@@ -10,48 +10,47 @@ namespace PasswordVerifier
     {
         static bool VerifyPassword(string input)
         {
-            bool num = false;
-            bool upp = false;
-            bool low = false;
-            bool spec = false;
-            char currentChar;
-            if (!(input.Length >= 2))
+            bool number = false;
+            bool upperLetter = false;
+            bool lowerLetter = false;
+            bool specialCharacter = false;
+          
+            int minimumLength = 8;
+            if (string.IsNullOrWhiteSpace(input))
             {
-                return false;
-                throw new ArgumentException("Length of the Password is must be greater then 2");
+                throw new ArgumentException("Empty Password");
             }
 
-            for (int i = 0; i < input.Length; i++)
+            if (!(input.Length >= minimumLength))
             {
-                currentChar = input[i];
+                throw new ArgumentException("Length of the Password is must be greater than " + minimumLength );
+            }
+
+            foreach (char currentChar in input)
+            {  
                 if (char.IsDigit(currentChar))
                 {
-                    num = true;
+                    number = true;
                 }
                 else if (char.IsUpper(currentChar))
                 {
-                    upp = true;
+                    upperLetter = true;
                 }
                 else if (char.IsLower(currentChar))
                 {
-                    low = true;
+                    lowerLetter = true;
                 }
                 else if (!char.IsLetterOrDigit(currentChar))
                 {
-                    spec = true;
+                    specialCharacter = true;
                 }
-
-                if (num && upp && low && spec)
+                if (number && upperLetter && lowerLetter && specialCharacter)
                 {
                     return true;
                 }
                 throw new ArgumentException("password not valid");
             }
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                return false;
-                throw new ArgumentException("Empty Password");
-            }
+            
             return false;
         }
         public static bool PasswordCheck(string input)
