@@ -14,8 +14,8 @@ namespace PasswordVerifier
             bool upperLetter = false;
             bool lowerLetter = false;
             bool specialCharacter = false;
-          
             int minimumLength = 8;
+
             if (string.IsNullOrWhiteSpace(input))
             {
                 throw new ArgumentException("Empty Password");
@@ -48,10 +48,8 @@ namespace PasswordVerifier
                 {
                     return true;
                 }
-                throw new ArgumentException("password not valid");
             }
-            
-            return false;
+            throw new ArgumentException("password not valid");
         }
         public static bool PasswordCheck(string input)
         {
